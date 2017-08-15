@@ -24,119 +24,117 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe PhoneNumbersController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    { number: "0122211", person_id: 1}
-  }
+  let(:valid_attributes) do
+    { number: '152125', person_id: 1 }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     { number: nil, person_id: nil }
-  }
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PhoneNumbersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
+  describe 'GET #index' do
+    it 'returns a success response' do
       phone_number = PhoneNumber.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "GET #show" do
-    it "returns a success response" do
+  describe 'GET #show' do
+    it 'returns a success response' do
       phone_number = PhoneNumber.create! valid_attributes
-      get :show, params: {id: phone_number.to_param}, session: valid_session
+      get :show, params: { id: phone_number.to_param }, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "GET #new" do
-    it "returns a success response" do
+  describe 'GET #new' do
+    it 'returns a success response' do
       get :new, params: {}, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "GET #edit" do
-    it "returns a success response" do
+  describe 'GET #edit' do
+    it 'returns a success response' do
       phone_number = PhoneNumber.create! valid_attributes
-      get :edit, params: {id: phone_number.to_param}, session: valid_session
+      get :edit, params: { id: phone_number.to_param }, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new PhoneNumber" do
-        expect {
-          post :create, params: {phone_number: valid_attributes}, session: valid_session
-        }.to change(PhoneNumber, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new PhoneNumber' do
+        expect do
+          post :create, params: { phone_number: valid_attributes }, session: valid_session
+        end.to change(PhoneNumber, :count).by(1)
       end
 
-      it "redirects to the created phone_number" do
-        post :create, params: {phone_number: valid_attributes}, session: valid_session
+      it 'redirects to the created phone_number' do
+        post :create, params: { phone_number: valid_attributes }, session: valid_session
         expect(response).to redirect_to(PhoneNumber.last)
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {phone_number: invalid_attributes}, session: valid_session
+        post :create, params: { phone_number: invalid_attributes }, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        { number: '012911', person_id: 2 }
-      }
-
-      it "updates the requested phone_number" do
-        phone_number = PhoneNumber.create! valid_attributes
-        put :update, params: {id: phone_number.to_param, phone_number: new_attributes}, session: valid_session
-        phone_number.reload
-        expect(phone_number.number).to eq('012911')
-        expect(phone_number.person_id).to eq(2)
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        { number: '535-24154', person_id: 3 }
       end
 
-      it "redirects to the phone_number" do
+      it 'updates the requested phone_number' do
         phone_number = PhoneNumber.create! valid_attributes
-        put :update, params: {id: phone_number.to_param, phone_number: valid_attributes}, session: valid_session
+        put :update, params: { id: phone_number.to_param, phone_number: new_attributes }, session: valid_session
+        phone_number.reload
+        expect(phone_number.number).to eq('535-24154')
+        expect(phone_number.person_id).to eq(3)
+      end
+
+      it 'redirects to the phone_number' do
+        phone_number = PhoneNumber.create! valid_attributes
+        put :update, params: { id: phone_number.to_param, phone_number: valid_attributes }, session: valid_session
         expect(response).to redirect_to(phone_number)
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
         phone_number = PhoneNumber.create! valid_attributes
-        put :update, params: {id: phone_number.to_param, phone_number: invalid_attributes}, session: valid_session
+        put :update, params: { id: phone_number.to_param, phone_number: invalid_attributes }, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested phone_number" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested phone_number' do
       phone_number = PhoneNumber.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: phone_number.to_param}, session: valid_session
-      }.to change(PhoneNumber, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: phone_number.to_param }, session: valid_session
+      end.to change(PhoneNumber, :count).by(-1)
     end
 
-    it "redirects to the phone_numbers list" do
+    it 'redirects to the phone_numbers list' do
       phone_number = PhoneNumber.create! valid_attributes
-      delete :destroy, params: {id: phone_number.to_param}, session: valid_session
+      delete :destroy, params: { id: phone_number.to_param }, session: valid_session
       expect(response).to redirect_to(phone_numbers_url)
     end
   end
-
 end
