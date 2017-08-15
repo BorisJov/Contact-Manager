@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="27927a9c-3989-4592-8ba6-394566263b1b" name="Default" comment="Initial Commit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/person.rb" afterPath="$PROJECT_DIR$/app/models/person.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/person_spec.rb" afterPath="$PROJECT_DIR$/spec/models/person_spec.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -42,21 +45,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="person_spec.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="person_spec.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/models/person_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="108">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="person.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="person.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/person.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="72">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,8 +75,8 @@
       <list>
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/spec/controllers/people_controller_spec.rb" />
-        <option value="$PROJECT_DIR$/app/models/person.rb" />
         <option value="$PROJECT_DIR$/spec/models/person_spec.rb" />
+        <option value="$PROJECT_DIR$/app/models/person.rb" />
       </list>
     </option>
   </component>
@@ -303,12 +306,12 @@
       <option name="presentableId" value="Default" />
       <updated>1502729751735</updated>
       <workItem from="1502729755478" duration="1452000" />
-      <workItem from="1502807733003" duration="2384000" />
+      <workItem from="1502807733003" duration="2860000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3836000" />
+    <option name="totallyTimeSpent" value="4312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="992" y="24" width="928" height="1056" extended-state="4" />
@@ -387,18 +390,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/person.rb">
+    <entry file="file://$PROJECT_DIR$/spec/models/person_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="108">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/person_spec.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/person.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
