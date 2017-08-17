@@ -27,9 +27,10 @@ RSpec.describe PhoneNumbersController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) do
-    { number: '152125', person_id: 1 }
-  end
+
+  let(:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
+  let(:valid_attributes) { { number: '555-1234', person_id: alice.id } }
+
 
   let(:invalid_attributes) do
     { number: nil, person_id: nil }
@@ -73,15 +74,16 @@ RSpec.describe PhoneNumbersController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid params' do
+
       it 'creates a new PhoneNumber' do
         expect do
           post :create, params: { phone_number: valid_attributes }, session: valid_session
         end.to change(PhoneNumber, :count).by(1)
       end
 
-      it 'redirects to the created phone_number' do
+      it "redirects to the phone number's owner" do
         post :create, params: { phone_number: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(PhoneNumber.last)
+        expect(response).to redirect_to(alice)
       end
     end
 
@@ -96,21 +98,21 @@ RSpec.describe PhoneNumbersController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        { number: '535-24154', person_id: 3 }
+        { number: 'MyNewString', person_id: alice.id }
       end
 
       it 'updates the requested phone_number' do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, params: { id: phone_number.to_param, phone_number: new_attributes }, session: valid_session
         phone_number.reload
-        expect(phone_number.number).to eq('535-24154')
-        expect(phone_number.person_id).to eq(3)
+        expect(phone_number.number).to eq('MyNewString')
+        expect(phone_number.person_id).to eq(alice.id)
       end
 
-      it 'redirects to the phone_number' do
+      it "redirects to number's owner" do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, params: { id: phone_number.to_param, phone_number: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(phone_number)
+        expect(response).to redirect_to(phone_number.person)
       end
     end
 

@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "phone_numbers/edit", type: :view do
+  let(:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
   before(:each) do
     @phone_number = assign(:phone_number, PhoneNumber.create!(
       :number => "MyString",
-      :person_id => 1
+      :person_id => alice.id
     ))
   end
 

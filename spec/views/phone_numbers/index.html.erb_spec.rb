@@ -1,15 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe "phone_numbers/index", type: :view do
+  let(:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
+
   before(:each) do
     assign(:phone_numbers, [
       PhoneNumber.create!(
         :number => "Number",
-        :person_id => 2
+        :person_id => alice.id
       ),
       PhoneNumber.create!(
         :number => "Number",
-        :person_id => 2
+        :person_id => alice.id
       )
     ])
   end
@@ -17,6 +19,6 @@ RSpec.describe "phone_numbers/index", type: :view do
   it "renders a list of phone_numbers" do
     render
     assert_select "tr>td", :text => "Number".to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
+    assert_select "tr>td", :text => alice.id.to_s, :count => 2
   end
 end
