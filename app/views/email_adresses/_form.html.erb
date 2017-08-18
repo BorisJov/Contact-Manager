@@ -1,0 +1,26 @@
+<%= form_with(model: email_adress, local: true) do |form| %>
+  <% if email_adress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(email_adress.errors.count, "error") %> prohibited this email_adress from being saved:</h2>
+
+      <ul>
+      <% email_adress.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :adress %>
+    <%= form.text_field :adress, id: :email_adress_adress %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :person_id, id: :email_adress_person_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

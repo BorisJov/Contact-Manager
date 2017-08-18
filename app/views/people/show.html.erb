@@ -12,12 +12,17 @@
 
 <ul>
   <% @person.phone_numbers.each do |phone| %>
-      <% #todo: resiti oko delete da vraca na coveka kome je izbrisano %>
       <li><%= phone.number %> <%= link_to 'edit', edit_phone_number_path(phone) %> | <%= link_to 'delete', phone_number_path(phone.id), :method => 'delete' %></li>
+  <% end %>
+</ul>
+<ul>
+  <% @person.email_adresses.each do |adr| %>
+    <li><%= adr.adress %> <%= link_to 'edit', edit_email_adress_path(adr) %> | <%= link_to 'delete', email_adress_path(adr.id), :method => 'delete' %></li>
   <% end %>
 </ul>
 
 <%= link_to 'Add phone number', new_phone_number_path(person_id: @person.id) %> |
+<%= link_to 'Add email adress', new_email_adress_path(person_id: @person.id) %> |
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
