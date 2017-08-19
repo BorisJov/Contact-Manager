@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :companies
   resources :email_adresses
   resources :phone_numbers
   resources :people
