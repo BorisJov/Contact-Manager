@@ -29,11 +29,11 @@ RSpec.describe PhoneNumbersController, type: :controller do
   # adjust the attributes here as well.
 
   let(:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
-  let(:valid_attributes) { { number: '555-1234', person_id: alice.id } }
+  let(:valid_attributes) { { number: '555-1234', contact_id: alice.id, contact_type: 'Person' } }
 
 
   let(:invalid_attributes) do
-    { number: nil, person_id: nil }
+    { number: nil, contact_id: nil }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -98,7 +98,7 @@ RSpec.describe PhoneNumbersController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        { number: 'MyNewString', person_id: alice.id }
+        { number: 'MyNewString', contact_id: alice.id }
       end
 
       it 'updates the requested phone_number' do
@@ -106,13 +106,13 @@ RSpec.describe PhoneNumbersController, type: :controller do
         put :update, params: { id: phone_number.to_param, phone_number: new_attributes }, session: valid_session
         phone_number.reload
         expect(phone_number.number).to eq('MyNewString')
-        expect(phone_number.person_id).to eq(alice.id)
+        expect(phone_number.contact_id).to eq(alice.id)
       end
 
       it "redirects to number's owner" do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, params: { id: phone_number.to_param, phone_number: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(phone_number.person)
+        expect(response).to redirect_to(phone_number.contact)
       end
     end
 
@@ -136,7 +136,7 @@ RSpec.describe PhoneNumbersController, type: :controller do
     it 'redirects to former owner' do
       phone_number = PhoneNumber.create! valid_attributes
       delete :destroy, params: { id: phone_number.to_param }, session: valid_session
-      expect(response).to redirect_to(phone_number.person)
+      expect(response).to redirect_to(phone_number.contact)
     end
   end
 end
