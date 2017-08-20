@@ -1,25 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="person">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @person.first_name %>
-</p>
+  <h2><%= "#{@person.first_name} #{@person.last_name}" %></h2>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @person.last_name %>
-</p>
+  <%= render 'phone_numbers/phone_numbers', :phone_numbers => @person.phone_numbers %>
 
-<%= render 'phone_numbers/phone_numbers', :phone_numbers => @person.phone_numbers %>
-
-<ul>
-  <% @person.email_adresses.each do |adr| %>
-    <li><%= adr.adress %> <%= link_to 'edit', edit_email_adress_path(adr) %> | <%= link_to 'delete', email_adress_path(adr.id), :method => 'delete' %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'Add phone number', new_phone_number_path(contact_id: @person.id, contact_type: 'Person') %> |
-<%= link_to 'Add email adress', new_email_adress_path(person_id: @person.id) %> |
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+  <ul>
+    <% @person.email_adresses.each do |adr| %>
+      <li><%= adr.adress %> <%= link_to 'edit', edit_email_adress_path(adr) %> | <%= link_to 'delete', email_adress_path(adr.id), :method => 'delete' %></li>
+    <% end %>
+  </ul>
+  <ul clas="actions">
+    <li><%= link_to 'Add phone number', new_phone_number_path(contact_id: @person.id, contact_type: 'Person') %></li>
+    <li><%= link_to 'Add email adress', new_email_adress_path(person_id: @person.id) %></li>
+    <li><%= link_to 'Edit', edit_person_path(@person) %></li><br/>
+    <li><%= link_to 'Back', people_path %></li>
+  </ul>
+</div>
