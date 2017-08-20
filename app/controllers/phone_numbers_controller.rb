@@ -1,16 +1,5 @@
 class PhoneNumbersController < ApplicationController
-  before_action :set_phone_number, only: [:show, :edit, :update, :destroy]
-
-  # GET /phone_numbers
-  # GET /phone_numbers.json
-  def index
-    @phone_numbers = PhoneNumber.all
-  end
-
-  # GET /phone_numbers/1
-  # GET /phone_numbers/1.json
-  def show
-  end
+  before_action :set_phone_number, only: [:edit, :update, :destroy]
 
   # GET /phone_numbers/new
   def new
@@ -29,7 +18,6 @@ class PhoneNumbersController < ApplicationController
     respond_to do |format|
       if @phone_number.save
         format.html { redirect_to @phone_number.contact, notice: 'Phone number was successfully created.' }
-        format.json { render :show, status: :created, location: @phone_number }
       else
         format.html { render :new }
         format.json { render json: @phone_number.errors, status: :unprocessable_entity }
@@ -43,7 +31,6 @@ class PhoneNumbersController < ApplicationController
     respond_to do |format|
       if @phone_number.update(phone_number_params)
         format.html { redirect_to @phone_number.contact, notice: 'Phone number was successfully updated.' }
-        format.json { render :show, status: :ok, location: @phone_number }
       else
         format.html { render :edit }
         format.json { render json: @phone_number.errors, status: :unprocessable_entity }
