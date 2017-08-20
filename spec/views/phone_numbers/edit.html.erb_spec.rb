@@ -21,4 +21,8 @@ RSpec.describe "phone_numbers/edit", type: :view do
       assert_select "input[name=?]", "phone_number[contact_id]"
     end
   end
+  it "shows the contact's name in the title" do
+    render
+    assert_select("h1", text: "New phone number for #{@phone_number.contact}")
+  end
 end

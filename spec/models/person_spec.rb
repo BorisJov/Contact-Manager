@@ -22,4 +22,8 @@ RSpec.describe Person, type: :model do
   it 'has an array of emails' do
     expect(person.email_adresses).to eq([])
   end
+
+  it 'converts to a string with first name last name' do
+    expect(person.to_s).to eq('Alice Smith')
+  end
 end
